@@ -29,12 +29,17 @@
                 <li><a href="#gallery">Galeria</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
-            <a href="#contact" class="btn-book">AGENDAR AGORA</a>
+            <div class="nav-actions">
+                <a href="#contact" class="btn-book">AGENDAR</a>
+                <button class="mobile-menu-btn" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/hero.png') center/cover no-repeat;">
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content reveal">
                 <h1>Redefinindo o <span>Estilo Clássico.</span></h1>
@@ -48,13 +53,13 @@
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about" style="padding: 8rem 0;">
+    <section class="about" id="about">
         <div class="container">
             <div class="section-header reveal">
                 <span>Nossa História</span>
                 <h2>Tradição & Modernidade</h2>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div class="about-grid">
                 <div class="reveal">
                     <img src="assets/tools.png" alt="Barber tools" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-glass);">
                 </div>
@@ -161,7 +166,7 @@
                             <input type="email" placeholder="Seu Melhor E-mail" required>
                         </div>
                         <div class="form-group">
-                            <select style="width: 100%; background: var(--glass); border: 1px solid var(--border-glass); padding: 1rem; color: var(--text-main); border-radius: 4px; font-family: var(--font-sans);">
+                            <select name="service" required>
                                 <option value="" disabled selected>Selecione o Serviço</option>
                                 <option value="corte">Corte Executive</option>
                                 <option value="barba">Barba Hunter</option>
