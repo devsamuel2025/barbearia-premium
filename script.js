@@ -86,6 +86,7 @@ if (form) {
             service: document.getElementById('service').value,
             date: document.getElementById('date').value,
             time: document.getElementById('time').value,
+            client_phone: document.getElementById('client_phone').value, // Novo campo WhatsApp do Cliente
             message: document.getElementById('message').value || "Nenhuma mensagem adicional"
         };
         
