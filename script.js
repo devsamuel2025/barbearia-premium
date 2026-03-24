@@ -71,7 +71,7 @@ if (dateInput) {
 
 // Form Submission with Google Sheets Integration
 const form = document.getElementById('booking-form');
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUy5Fcb2FHTYYgPqzJ0iiR_ol42M_Ilq_ol27KkRg7Tvc44rqz9wvAitM6TtH7Ujy_/exec'; // URL da Versão 5 (Agendamento Ordenado)
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUy5Fcb2FHTYYgPqzJ0iiR_ol42M_IIq_oI27KkRg7Tvc44rqz9wvAitM6TtH7Ujy_/exec'; // URL definitivo com letras maiúsculas corrigidas!
 
 if (form) {
     form.addEventListener('submit', (e) => {
