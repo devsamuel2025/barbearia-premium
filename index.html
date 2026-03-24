@@ -160,23 +160,27 @@
                 <div class="contact-form reveal">
                     <form id="booking-form">
                         <div class="form-group">
-                            <input type="text" placeholder="Seu Nome Completo" required>
+                            <input type="text" id="name" placeholder="Seu Nome Completo" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Seu Melhor E-mail" required>
+                            <input type="email" id="email" placeholder="Seu Melhor E-mail" required>
                         </div>
                         <div class="form-group">
-                            <select name="service" required>
+                            <select id="service" required>
                                 <option value="" disabled selected>Selecione o Serviço</option>
-                                <option value="corte">Corte Executive</option>
-                                <option value="barba">Barba Hunter</option>
-                                <option value="combo">Combo VIP</option>
+                                <option value="Corte Executive">Corte Executive</option>
+                                <option value="Barba Hunter">Barba Hunter</option>
+                                <option value="Combo VIP">Combo VIP</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <textarea rows="5" placeholder="Mensagem Adicional (Horário preferencial, etc)"></textarea>
+                        <div class="form-group" style="display: flex; gap: 1rem;">
+                            <input type="date" id="date" required style="flex: 1;">
+                            <input type="time" id="time" required style="flex: 1;">
                         </div>
-                        <button type="submit" class="btn-book" style="width: 100%;">ENVIAR SOLICITAÇÃO</button>
+                        <div class="form-group">
+                            <textarea id="message" rows="4" placeholder="Algum detalhe adicional?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-book" style="width: 100%;">CONFIRMAR AGENDAMENTO</button>
                     </form>
                 </div>
             </div>

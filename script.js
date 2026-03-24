@@ -62,22 +62,66 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form Submission Simulation
+// Set min date to today for the booking form
+const dateInput = document.getElementById('date');
+if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+}
+
+// Form Submission with Google Sheets Integration
 const form = document.getElementById('booking-form');
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMo4IHlaczhoVhhyE7i084j95jck5_buo18ue2WHTDW0kWZhYkHHFHYyC8auWKb9t2/exec'; // URL configurado automaticamente
+
 if (form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const btn = form.querySelector('button');
         const originalText = btn.innerText;
         
-        btn.innerText = 'ENVIANDO...';
-        btn.disabled = true;
+        // Form Data
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            service: document.getElementById('service').value,
+            date: document.getElementById('date').value,
+            time: document.getElementById('time').value,
+            message: document.getElementById('message').value || "Nenhuma mensagem adicional"
+        };
         
-        setTimeout(() => {
-            alert('Obrigado! Sua solicitação de agendamento foi enviada. Entraremos em contato via WhatsApp em breve.');
+        btn.innerText = 'PROCESSANDO...';
+        btn.disabled = true;
+
+        // Note: For this to work, the user needs to provide the SCRIPT_URL from Google Apps Script
+        if (SCRIPT_URL === 'SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI') {
+            // Local simulation if URL not provided
+            setTimeout(() => {
+                alert(`SIMULAÇÃO ATIVA:\n\nAgendamento feito para ${formData.name} no dia ${formData.date} às ${formData.time}.\n\nPara o sistema real funcionar, configure o URL do Google Apps Script.`);
+                btn.innerText = originalText;
+                btn.disabled = false;
+                form.reset();
+            }, 1000);
+            return;
+        }
+
+        // Real Submission to Google Sheets
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Common pattern for GAS
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(() => {
+            alert(`✅ Sucesso! Agendamento confirmado para ${formData.name} no dia ${formData.date} às ${formData.time}.\nUma notificação foi enviada.`);
+            form.reset();
+        })
+        .catch(error => {
+            console.error('Erro no agendamento:', error);
+            alert('Ops! Ocorreu um erro ao salvar seu agendamento. Tente novamente ou nos chame no WhatsApp.');
+        })
+        .finally(() => {
             btn.innerText = originalText;
             btn.disabled = false;
-            form.reset();
-        }, 1500);
+        });
     });
 }
