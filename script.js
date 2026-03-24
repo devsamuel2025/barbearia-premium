@@ -71,7 +71,7 @@ if (dateInput) {
 
 // Form Submission with Google Sheets Integration
 const form = document.getElementById('booking-form');
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyps7xGXaCGpDiUzs8cOeZR46Sbyv2hoIjFa6ffRxUhY1f3TN3BNPeLBItIl_ihYBOe/exec'; // Link oficial do Relatório Executive (Última Versão)!
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxK1QFtrta_5tuATcjiXoY_nbjjV2XB45NMFkDecG9Fbp_XnaWEmTDOKTvHSMUYASXI/exec'; // Link FINAL sem o "SIM"!🏆💈
 
 if (form) {
     form.addEventListener('submit', (e) => {
