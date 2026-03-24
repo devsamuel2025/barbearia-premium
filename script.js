@@ -104,20 +104,22 @@ if (form) {
             return;
         }
 
-        // Real Submission to Google Sheets
+        // Real Submission to Google Sheets (More robust version)
         fetch(SCRIPT_URL, {
             method: 'POST',
-            mode: 'no-cors', // Common pattern for GAS
-            headers: { 'Content-Type': 'application/json' },
+            mode: 'no-cors',
+            headers: { 
+                'Content-Type': 'text/plain;charset=utf-8' 
+            },
             body: JSON.stringify(formData)
         })
         .then(() => {
-            alert(`✅ Sucesso! Agendamento confirmado para ${formData.name} no dia ${formData.date} às ${formData.time}.\nUma notificação foi enviada.`);
+            alert(`✅ Sucesso! Agendamento enviado para ${formData.name} no dia ${formData.date} às ${formData.time}.\nVerifique sua planilha e e-mail.`);
             form.reset();
         })
         .catch(error => {
             console.error('Erro no agendamento:', error);
-            alert('Ops! Ocorreu um erro ao salvar seu agendamento. Tente novamente ou nos chame no WhatsApp.');
+            alert('Ops! Ocorreu um erro ao enviar seu agendamento. Verifique se o Google Apps Script está publicado corretamente.');
         })
         .finally(() => {
             btn.innerText = originalText;
